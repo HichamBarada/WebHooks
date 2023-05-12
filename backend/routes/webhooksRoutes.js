@@ -417,8 +417,6 @@ router.post("/webhook", async (req, res) => {
       const dayStr = day.toString().padStart(2, "0");
       const dateStr2 = `${year}-${monthStr}-${dayStr}`;
       const date = new Date(dateStr2);
-      console.log(date);
-
       const netProfit = await getTotalNetProfitByDate(date);
       const response = {
         fulfillmentText: `The net profit for ${dateStr2} is ${netProfit}${
@@ -442,7 +440,6 @@ router.post("/webhook", async (req, res) => {
           : req.body.queryResult.parameters.ordinal;
       const dateStr = `${year}-${month}-${ordinal}`;
       const date = new Date(dateStr);
-      console.log(date);
       const netProfit = await getTotalNetProfitByDate(date);
       const response = {
         fulfillmentText: `The net profit for  ${monthName}  ${getOrdinal(
