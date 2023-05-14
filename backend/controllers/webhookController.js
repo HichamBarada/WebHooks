@@ -187,7 +187,7 @@ const getExpensesByMonthNum = async (year, month) => {
       },
     },
   ]);
-
+  console.log(expenses);
   return expenses.length > 0 ? expenses[0].total : 0;
 };
 
