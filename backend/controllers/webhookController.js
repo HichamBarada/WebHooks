@@ -124,6 +124,7 @@ const getIncomesByMonth = async (start, end) => {
   }
 };
 const getIncomesByMonthNum = async (year, month) => {
+
   const incomes = await Income.aggregate([
     {
       $match: {
@@ -166,6 +167,8 @@ const getExpensesByMonth = async (start, end) => {
 };
 
 const getExpensesByMonthNum = async (year, month) => {
+  console.log(year)
+  console.log(month)
   const expenses = await Expense.aggregate([
     {
       $match: {
