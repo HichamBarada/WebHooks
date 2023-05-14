@@ -119,8 +119,10 @@ router.post("/webhook", async (req, res) => {
       const monthNumber =
         new Date(Date.parse(monthName + " 1, " + year)).getMonth() + 1;
       const month = monthNumber < 10 ? "0" + monthNumber : monthNumber;
-
-      const totalIncomes = await getIncomesByMonthNum(year, month);
+      const date = new Date(`${year}-${month}-01`);
+      const start= new Date(date.getUTCFullYear(),date.getUTCMonth(),1);
+      const end = new Date(date.getUTCFullYear(),date.getUTCMonth()+1,0,23,59,59.999);      
+      const totalIncomes = await getIncomesByMonth(start, end);
       const response = {
         fulfillmentText: `The total incomes for  ${monthName}  ${year}  is ${totalIncomes}$.`,
       };
@@ -161,7 +163,6 @@ router.post("/webhook", async (req, res) => {
       const date = new Date(`${year}-${month}-01`);
       const start= new Date(date.getUTCFullYear(),date.getUTCMonth(),1);
       const end = new Date(date.getUTCFullYear(),date.getUTCMonth()+1,0,23,59,59.999);      
-      console.log("end",end);
       const totalExpenses = await getExpensesByMonth(start, end);
       const response = {
         fulfillmentText: `The total expenses for  ${monthName}  ${year}  is ${totalExpenses}$.`,
@@ -200,8 +201,10 @@ router.post("/webhook", async (req, res) => {
       const monthNumber =
         new Date(Date.parse(monthName + " 1, " + year)).getMonth() + 1;
       const month = monthNumber < 10 ? "0" + monthNumber : monthNumber;
-
-      const totalPayrolls = await getPayrollsByMonthNum(year, month);
+      const date = new Date(`${year}-${month}-01`);
+      const start= new Date(date.getUTCFullYear(),date.getUTCMonth(),1);
+      const end = new Date(date.getUTCFullYear(),date.getUTCMonth()+1,0,23,59,59.999);      
+      const totalPayrolls = await getPayrollsByMonth(start, end);
       const response = {
         fulfillmentText: `The total payrolls for  ${monthName}  ${year}  is ${totalPayrolls}$.`,
       };
@@ -239,8 +242,10 @@ router.post("/webhook", async (req, res) => {
       const monthNumber =
         new Date(Date.parse(monthName + " 1, " + year)).getMonth() + 1;
       const month = monthNumber < 10 ? "0" + monthNumber : monthNumber;
-
-      const netProfit = await getNetProfitByMonthNum(year, month);
+      const date = new Date(`${year}-${month}-01`);
+      const start= new Date(date.getUTCFullYear(),date.getUTCMonth(),1);
+      const end = new Date(date.getUTCFullYear(),date.getUTCMonth()+1,0,23,59,59.999);  
+      const netProfit = await getNetProfitByMonth(start, end);
       const response = {
         fulfillmentText: `The Net Profit for  ${monthName}  ${year}  is ${netProfit}$.`,
       };
