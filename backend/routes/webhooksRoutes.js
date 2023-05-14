@@ -160,7 +160,7 @@ router.post("/webhook", async (req, res) => {
       const month = monthNumber < 10 ? "0" + monthNumber : monthNumber;
       const date = new Date(`${year}-${month}-01`);
       const start= new Date(date.getUTCFullYear(),date.getUTCMonth(),1);
-      const end = new Date(date.getUTCFullYear,date.getUTCMonth()+1,0);
+      const end = new Date(date.getUTCFullYear(),date.getUTCMonth()+1,0);
       console.log("start",start);
       console.log("end",end);
       const totalExpenses = await getExpensesByMonth(start, end);
