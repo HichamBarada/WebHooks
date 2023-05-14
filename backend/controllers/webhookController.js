@@ -152,14 +152,13 @@ const getExpensesByMonth = async (start, end) => {
     const expenses = await Expense.find({
       date: {
         $gte: start,
-        $lte: new Date(`${end.getUTCFullYear()}-${end.getUTCMonth()}-${end.getUTCDate()}.-T23:59:59.999Z`),
+        $lte: end,
       },
     });
     const totalAmount = expenses.reduce(
       (sum, expense) => sum + expense.amount,
       0
     );
-
     return totalAmount;
   } catch (err) {
     console.error(err);
