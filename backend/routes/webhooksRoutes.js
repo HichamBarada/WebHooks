@@ -165,8 +165,7 @@ router.post("/webhook", async (req, res) => {
       const start = startDate.toISOString().substring(0,10);
       const end = endDate.toISOString().substring(0,10);
       
-      console.log("start",start);
-      console.log("end",end);
+      console.log("endDate",endDate);
       const totalExpenses = await getExpensesByMonth(start, end);
       const response = {
         fulfillmentText: `The total expenses for  ${monthName}  ${year}  is ${totalExpenses}$.`,

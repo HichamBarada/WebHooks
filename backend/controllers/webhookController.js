@@ -159,8 +159,7 @@ const getExpensesByMonth = async (start, end) => {
       (sum, expense) => sum + expense.amount,
       0
     );
-    console.log(expenses);
-    console.log(totalAmount);
+
     return totalAmount;
   } catch (err) {
     console.error(err);
